@@ -89,3 +89,10 @@
   * **Restriction réseau (par IP / hôte) :** Créer le compte avec une adresse précise (ex. `'admin'@'192.168.1.50'` ou `'admin'@'localhost'` via tunnel SSH/VPN) plutôt que `'admin'@'%'`, afin d'interdire toute connexion depuis Internet.
   * **Rotation régulière des mots de passe et MFA :** Renouveler périodiquement les mots de passe (ou utiliser des accès temporaires via un bastion/gestionnaire de secrets) et imposer l'authentification multifacteur (MFA) sur l'accès serveur.
   * **Traçabilité nominative (audit) :** Créer un compte nominatif par administrateur plutôt qu'un compte générique partagé `admin`, couplé à l'activation des logs d'audit MySQL pour savoir précisément qui a exécuté chaque action.
+
+  #### 5. Sur la séparation des responsabilités
+
+  * **Compte distinct :** Le fait de faire plusieurs compte chacun pour gérer son milieu et très utile pour savoir qui fais quoi tout en s'assurant que chacun puisse uniquement modifier ce sue quoi il travaille et rien d'autre. Cela permet de rajouter une couche de sécurité ainsi que de pouvoir rajouter une simplicité de maintenance.
+
+  * **Bénéfice des séparations :** Cette séparation nous permet de faire un journal des logs plus précis afin de savoir quel utilisateurs à fait tel modifications cela sera beaucoup plus simple pour remonter à la personne si jamais il s'agit d'une tentative d'attaque.
+  * **Repérage d'une faille sur un compte :** Si une faille de sécurité est repérer sur le compte `site`, alors l'attaque pourra uniquement se dérouler sur le contenu autorisé par l'utilisateur `site` et ne pourra rien faire de plus. Cela est du à la séparation des comptes car site ne possède pas les droits de travailler sur la gestion ou sur le coté administration car il en possèd pas les droits.
