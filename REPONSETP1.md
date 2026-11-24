@@ -115,3 +115,7 @@
   * **Pourquoi cela reste dangereux :**
     * **Surface d'attaque et énumération :** Même sans droits sur les tables métiers, le compte peut s'authentifier sur le serveur MySQL, consommer des ressources (attaques par déni de service en ouvrant des milliers de connexions ou de requêtes lourdes) et interroger les métadonnées accessibles dans `information_schema` (version du serveur, variables système, liste des jeux de caractères/collations) pour préparer une attaque ciblée.
     * **Risque d'escalade ou d'erreur future :** Laisser des comptes inutilisés ou sans droits définis encombre la gestion des accès et augmente le risque qu'un administrateur leur attribue plus tard un rôle trop permissif par inadvertance ou que le compte soit exploité via une vulnérabilité du moteur MySQL.
+
+    ### Mission 3 : Test des accès 
+
+    #### 
