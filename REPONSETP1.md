@@ -119,3 +119,7 @@
     ### Mission 3 : Test des accès 
 
     #### Création des fichiers de connexion à la BDD pour chaque compte :
+
+    * Le lien pour accéder au client.php :**http://172.16.199.254/B1/TP1MySQL/client.php**
+    * Le lien pour accéder au admin.php : **http://172.16.199.254/B1/TP1MySQL/admin.php**
+    * Le lien pour accéder au gestionnaire.php : **http://172.16.199.254/B1/TP1MySQL/gestionnaire.php**
