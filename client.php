@@ -1,29 +1,18 @@
 <?php
-session_start();
+require_once 'connexion.php';
 
-// Vérification que l'utilisateur est bien connecté
-if (!isset($_SESSION['role'])) {
-    header('Location: connexion.php');
-    exit;
-}
+// Récupération de la connexion avec les droits 'site'
+$conn = getConnexion('site');
 
-try {
-    $conn = new PDO('mysql:host=localhost;dbname=MetalStorm;charset=utf8', 'site', 'Site#Public');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $concerts = $conn->query("SELECT * FROM concerts WHERE places_restantes > 0")->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Erreur : " . $e->getMessage());
-}
+$concerts = $conn->query("SELECT * FROM concerts WHERE places_restantes > 0")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>MetalStorm - Espace Client</title>
+    <title>MetalStorm - Concerts disponibles</title>
 </head>
 <body>
-    <p>Connecté en tant que : <strong><?= htmlspecialchars($_SESSION['login']) ?></strong> (Rôle : <?= htmlspecialchars($_SESSION['role']) ?>) | <a href="deconnexion.php">Déconnexion</a></p>
     <h1>Concerts disponibles</h1>
 
     <ul>
